@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+
+    <script>
+
+        function Check(){
+            var a= $("#user").val()
+            var b= $("#pwd").val()
+            if((a=="")&&(b=="")){
+                alert("请输入账号密码")
+            }else{
+               // alert("right")
+               loginform.submit()
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="container">
+        <h1>Welcome</h1>
+        <span th:text="${msg}"></span>
+        <form method="post" action="/loginCheck" name="loginform">
+            <input type="text" placeholder="账号" name="admin_name" id="user" class="form-control"/>
+            <input ttype="text" placeholder="密码" name="admin_password" id="pwd" class="form-control"/>
+            <input type="reset" id="btn_reg" value="清除" class="form-control"/>
+            <input type="button" id="btn_log" value="登录" class="form-control" onclick="Check()"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/register.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <style type="text/css">
+        .s{
+            color: #1d2124;
+        }
+        .ss{
+            position: absolute;
+        }
+        .page{
+            position: relative;
+            right: -800px;
+        }
+        .p{
+            float: left;
+            margin: 0 5px;
+        }
+        </style>
+</head>
+<body>
+<div class="nav_bar">
+</div>
+<div class="wrap">
+    <!--//导航栏-->
+
+    <div class="nav">
+        <ul>
+            <li><a href="/registerByname" >新生注册</a><br></li>
+            <li><a href="/registeredStudent">已注册新生管理</a><br></li>
+            <li><a href="/admissionStudent">新生录取</a><br></li>
+        </ul>
+    </div>
+    <div class="content">
+
+
+<table class="table">
+    <thead>
+    <tr>
+
+        <th scope="col">姓名</th>
+        <th scope="col">学号</th>
+        <th scope="col">性别</th>
+        <th scope="col">班级</th>
+        <th scope="col">专业</th>
+        <th scope="col">宿舍编号</th>
+        <th scope="col">宿舍名</th>
+        <th scope="col">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr th:each="item : ${AllStudentAndDormitory}">
+            <td th:text="${item.stu_name}"></td>
+            <td th:text="${item.stu_num}"></td>
+            <td th:text="${item.stu_gender}"></td>
+            <td th:text="${item.stu_class}"></td>
+            <td th:text="${item.stu_major}"></td>
+            <td th:text="${item.room_number}"></td>
+            <td th:text="${item.room_name}"></td>
+            <td><a th:href="@{'http://localhost:8080/registerStudentinfoModify?stu_id='+${item.stu_id}}"
+                   class="btn btn-primary">修改</a>
+            </td>
+        </tr>
+
+
+    </tbody>
+
+</table>
+        <div class="ss">
+        <div class="page">
+<div class="p">
+<a href="/registeredStudent?pageNum=1" class="s">首页</a>
+</div>
+<div class="p" th:if=" ${pageNum} eq 1">
+    <a href="/registeredStudent?pageNum=1"class="s" >上一页</a>
+</div>
+<div class="p" th:if=" ${pageNum} ne 1">
+    <a th:href="@{'http://localhost:8080/registeredStudent?pageNum='+${pageNum-1}}" class="s">上一页</a>
+</div>
+<div class="p" th:each="i : ${#numbers.sequence(1,pageTotal)}">
+    <a th:href="@{'http://localhost:8080/registeredStudent?pageNum='+${i}}" th:text="${i}" class="s"> </a>
+</div>
+<div class="p" th:if=" ${pageNum} ne ${pageTotal}">
+<a th:href="@{'http://localhost:8080/registeredStudent?pageNum='+${pageNum+1}}" class="s">下一页</a>
+</div>
+<div class="p" th:if=" ${pageNum} eq ${pageTotal}">
+    <a th:href="@{'http://localhost:8080/registeredStudent?pageNum='+${pageTotal}}" class="s">下一页</a>
+</div>
+            <a th:href="@{'http://localhost:8080/registeredStudent?pageNum='+${pageTotal}}" class="s">尾页</a>
+
+            </div>
+        </div>
+</div>
+</div>
+</body>
+</html>

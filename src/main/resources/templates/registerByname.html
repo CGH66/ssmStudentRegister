@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/registerByName.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+</head>
+<body>
+<div class="nav_bar">
+</div>
+
+<div class="wrap">
+    <!--//导航栏-->
+
+    <div class="nav">
+        <ul>
+            <li><a href="/registerByname">新生注册</a><br></li>
+            <li><a href="/registeredStudent">已注册新生管理</a><br></li>
+            <li><a href="/admissionStudent">新生录取</a><br></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="flexa">
+            <h1 th:text="${msg}"></h1>
+            <form method="post" action="/getStudentByName" >
+                <div class="text">
+                    <input type="text" placeholder="姓名" name="student_name" class="name" />
+                </div>
+                <br>
+                <div class="btn-group">
+                    <input type="reset" value="清除" class="btn btn-danger">&nbsp;&nbsp;
+                    <input type="submit" value="确认" class="btn btn-primary" >
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!--<div class="wrap">
+&lt;!&ndash;//导航栏&ndash;&gt;
+    <div class="content">
+        <div class="mag">
+        </div>
+        <a href="/registerByname">新生注册</a><br>
+       <a href="/registeredStudent">已注册新生管理</a><br>
+    </div>
+
+    <HR align=center width=100% color=#987cb9 SIZE=1>
+    <span th:text="${msg}"></span>
+&lt;!&ndash;    //注册&ndash;&gt;
+    <form method="post" action="/getStudentByName" >
+        <div class="text">
+            <input type="text" placeholder="姓名" name="student_name" class="form-control"/>
+        </div>
+        <br>
+        <div class="btn-group">
+            <input type="reset" value="清除" class="btn btn-danger">&nbsp;&nbsp;
+            <input type="submit" value="确认" class="btn btn-primary" >
+        </div>
+    </form>
+</div>-->
+</body>
+</html>

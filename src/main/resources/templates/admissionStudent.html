@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/register.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+</head>
+<body>
+<div class="nav_bar">
+</div>
+<div class="wrap">
+    <!--//导航栏-->
+
+    <div class="nav">
+        <ul>
+            <li><a href="/registerByname">新生注册</a><br></li>
+            <li><a href="/registeredStudent">已注册新生管理</a><br></li>
+            <li><a href="/admissionStudent">新生录取</a><br></li>
+        </ul>
+    </div>
+    <div class="content">
+        <form action="/admissionStudentupload" enctype="multipart/form-data" method="post">
+            <!--  <span th:text="${student}">   -->
+            文件<input type="file" name="file"><br>
+            姓名：<input type="text" name="stu_name"><br>
+
+            性别：   <select class="selectpicker" name="stu_gender">
+            <option value="男" >男</option>
+            <option value="女">女</option>
+        </select>
+
+        </select><br>
+
+            专业：<select class="selectpicker" name="stu_major">
+                <option value="计算机科学与技术" >计算机科学与技术</option>
+                <option value="物联网">物联网</option>
+                <option value="其他" >其他</option>
+
+            </select><br>
+            身份证：<input type="text" name="stu_id"><br>
+            毕业高中：<input type="text" name="stu_highschool"><br>
+            <input type="reset" value="清除" class="btn-danger">
+            <input type="submit" value="录取" class="btn-primary"><br>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

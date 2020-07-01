@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/register.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+</head>
+<body>
+<div class="nav_bar">
+</div>
+<div class="wrap">
+    <!--//导航栏-->
+
+    <div class="nav">
+        <ul>
+            <li><a href="/registerByname">新生注册</a><br></li>
+            <li><a href="/registeredStudent">已注册新生管理</a><br></li>
+            <li><a href="/admissionStudent">新生录取</a><br></li>
+        </ul>
+    </div>
+    <div class="content">
+<form action="/registeredStudentinfoUpdate" >
+   <input type='text' id="stu_id" hidden th:value="${student.stu_id}">
+  <!--  <span th:text="${student}">   -->
+    姓名：<input type="text" name="stu_name" disabled
+              th:value="${student.stu_name}"><br>
+    学号：<input type="text" disabled
+              th:value="${student.stu_num}"><br>
+    性别：<input type="text" disabled
+              th:value="${student.stu_gender}"><br>
+    专业：<input type="text" disabled
+               th:value="${student.stu_major}"><br>
+    班级：<input type="text" id="stu_class" name="stu_class"
+              th:value="${student.stu_class}"><br>
+    宿舍号: <input type="text" id="Room_num"
+               th:value="${student.room_number}"><br>
+    宿舍编号：<input type="text" id="Room_name"
+                th:value="${student.room_name}"><br>
+    <input type="reset" value="清除" class="btn-danger"> <input type="button" onclick='updateStudentUpd()'
+                                           value="修改" class="btn-primary"><br>
+</form>
+    </div>
+</div>
+<script>
+    function updateStudentUpd(){
+        var a= $("#stu_id").val()
+        var b=$("#Room_name").val()
+        var c=$("#Room_num").val()
+        var d=$("#stu_class").val()
+        window.location.href="/registeredStudentinfoUpdate?stu_id="+a+"&Room_name="+b+"&Room_num="+c+"&stu_class="+d;
+    }
+
+</script>
+
+</body>
+</html>
