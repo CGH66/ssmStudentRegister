@@ -24,8 +24,8 @@ public class sqlCopyAndSendEmail {
     public void sendSimpleEmail(String from,String to,String subject,String text){
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-        javaMailSender.setUsername("1327372129@qq.com");
-        javaMailSender.setPassword("movrkghlfpvnbage");
+        javaMailSender.setUsername("*****");//寄件人
+        javaMailSender.setPassword("******");//授权码
         javaMailSender.setHost("smtp.qq.com");
         simpleMailMessage.setTo(to);
         simpleMailMessage.setSubject(subject);
@@ -59,7 +59,7 @@ public class sqlCopyAndSendEmail {
         System.out.println(cmd);
         Process exec = Runtime.getRuntime().exec(cmd);
         //备份成功，发送验证码模板文件
-       sendSimpleEmail("1327372129@qq.com","3115808457@qq.com",currentDate+"数据备份",dbName+"备份数据库成功!");
+       sendSimpleEmail("寄件人","收件人",currentDate+"数据备份",dbName+"备份数据库成功!");
         //输出备份成功提醒
         System.out.println("数据库备份成功");
     }
